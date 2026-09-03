@@ -41,8 +41,12 @@ char LICENSE[] SEC("license") = "GPL";
 
 ### Understanding Key eBPF Concepts
 
-- **What is `execve`?**
-  It is a Linux system call used to execute a program. Almost every process starts this way. By hooking `execve` with eBPF, you can monitor every process launch on a system.
+- **What is `execve` and what else exists?**
+  `execve` is a system call to execute a program. It is the most common way processes start. Other important system calls include:
+  - Process creation: `fork`, `clone`.
+  - File I/O: `open`, `read`, `write`, `close`.
+  - Networking: `socket`, `bind`, `connect`, `accept`.
+  Hooking these allows you to track everything from file access to network connections.
 
 - **Common eBPF Hooks**
   - **kprobe:** Attaches to any kernel function (dynamic).
@@ -55,20 +59,30 @@ char LICENSE[] SEC("license") = "GPL";
   It is a high-level helper function provided by tools like BCC or libbpf. It abstracts the complex system calls required to attach an eBPF program to a kernel function, making it easy to profile or trace system behavior.
 
 - Lesson 1.2 eBPF Hello World
+```python
 #!/usr/bin/python3
-
 from bcc import BPF
 
- program = r"""
-     int hello(void *ctx) {
-       bpf_trace_printk("Hello World");
-       return 0;
-     }
+# Define the eBPF program
+program = r"""
+    int hello(void *ctx) {
+      bpf_trace_printk("Hello World\\n");
+      return 0;
+    }
 """
 
+# Load the program
 b = BPF(text=program)
-syscall = b.get_Suscall_fname("execve")
+
+# Get the correct kernel function name for the syscall
+syscall = BPF.get_syscall_fnname("execve")
+
+# Attach the kprobe
 b.attach_kprobe(event=syscall, fn_name="hello")
+
+# Read trace output
+b.trace_print()
+```
 
 
 
