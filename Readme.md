@@ -160,6 +160,18 @@ if (p != 0) {
 
 ### Lesson 2.1 XDP Programs
 
+Dropping packets with eBPF, XDP_PASS, XDP_DROP, XDP_TX 
+
+
+### Lesson 2.2 XDP Recap
+XDP event is before kernetl network processs the packet.
+
+can be applied layer 7
+
+can be applid to layer 3 
+
+TC= Traffic Control
+
 
 
 #### Additional Topics
