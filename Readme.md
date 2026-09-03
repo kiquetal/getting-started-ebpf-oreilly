@@ -144,6 +144,16 @@ if (p != 0) {
 
 - Lesson 1.4 Introduction to bpftool
 
+ Is the command line utility fo inspecting manageing eBPF
+ 
+ bpftool prog list
+ ID is dynamically allocated and will always be unique
+ Name is defined by source code
+ Tag is a SHA sum of the program instructions
+
+ 
+
+
 #### Additional Topics
 
 - Learning
