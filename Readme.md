@@ -18,6 +18,10 @@ kprobes, uprobes, tracpeoints,network psackrts ,linus security module,perf event
     +-------------------+
 ```
 
+eBPF Verifier= ensures programs can't crash or hang the kernel.
+
+
+
 ### Example: kprobe for `sys_execve`
 
 ```c
@@ -36,6 +40,11 @@ char LICENSE[] SEC("license") = "GPL";
 ```
 
 - Lesson 1.2 eBPF Hello World
+
+
+
+
+
 - Lesson 1.3 eBPF Maps
 - Lesson 1.4 Introduction to bpftool
 
