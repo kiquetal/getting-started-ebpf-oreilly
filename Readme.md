@@ -3,8 +3,20 @@
 - Lesson 1.1 What is eBPF
 
 Initially was to filter packtet, but now it can be used to intercept some events like
-
 kprobes, uprobes, tracpeoints,network psackrts ,linus security module,perf events
+
+```
+      User Space          Kernel Space
+    +-------------+     +-------------------+
+    |  eBPF Prog  | --> |     eBPF VM       |
+    |  (loader)   |     | (Verifier/JIT)    |
+    +-------------+     +-------------------+
+             |                   ^
+             v                   |
+    +-------------------+        |
+    |   eBPF Map        | <------+
+    +-------------------+
+```
 
 - Lesson 1.2 eBPF Hello World
 - Lesson 1.3 eBPF Maps
