@@ -89,6 +89,10 @@ Once you run this script, it will sit and wait for `execve` calls. If you open a
 
 
 - Lesson 1.3 eBPF Maps
+
+
+
+
 - Lesson 1.4 Introduction to bpftool
 
 #### Additional Topics
