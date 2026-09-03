@@ -39,9 +39,36 @@ int BPF_KPROBE(trace_execve) {
 char LICENSE[] SEC("license") = "GPL";
 ```
 
+### Understanding Key eBPF Concepts
+
+- **What is `execve`?**
+  It is a Linux system call used to execute a program. Almost every process starts this way. By hooking `execve` with eBPF, you can monitor every process launch on a system.
+
+- **Common eBPF Hooks**
+  - **kprobe:** Attaches to any kernel function (dynamic).
+  - **uprobe:** Attaches to user-space application functions.
+  - **tracepoint:** Static hooks in the kernel source (stable API).
+  - **XDP:** High-performance network packet processing at the driver level.
+  - **LSM:** Security hooks for policy enforcement.
+
+- **What is `attach_kprobe`?**
+  It is a high-level helper function provided by tools like BCC or libbpf. It abstracts the complex system calls required to attach an eBPF program to a kernel function, making it easy to profile or trace system behavior.
+
 - Lesson 1.2 eBPF Hello World
+#!/usr/bin/python3
 
+from bcc import BPF
 
+ program = r"""
+     int hello(void *ctx) {
+       bpf_trace_printk("Hello World");
+       return 0;
+     }
+"""
+
+b = BPF(text=program)
+syscall = b.get_Suscall_fname("execve")
+b.attach_kprobe(event=syscall, fn_name="hello")
 
 
 
