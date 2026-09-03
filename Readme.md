@@ -151,7 +151,8 @@ if (p != 0) {
  Name is defined by source code
  Tag is a SHA sum of the program instructions
 
- 
+ bpftool map list
+ bpftool map dump id 3 
 
 
 #### Additional Topics
