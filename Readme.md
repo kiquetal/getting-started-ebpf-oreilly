@@ -84,6 +84,8 @@ b.attach_kprobe(event=syscall, fn_name="hello")
 b.trace_print()
 ```
 
+Once you run this script, it will sit and wait for `execve` calls. If you open another terminal and run commands like `ls` or `whoami`, you will see the "Hello World" output appear in the first terminal, confirming that these commands triggered the `execve` system call, which was then intercepted by your eBPF program.
+
 
 
 - Lesson 1.3 eBPF Maps
