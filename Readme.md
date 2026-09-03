@@ -90,11 +90,57 @@ Once you run this script, it will sit and wait for `execve` calls. If you open a
 
 - Lesson 1.3 eBPF Maps
 
-Maps allow data to be shared between ebpf programs
-are all key/value stores
+Maps are key/value stores that allow eBPF programs to maintain state across events and share data with user-space applications.
 
+### Example: Counting Executions per Process (PID)
 
+```python
+from bcc import BPF
 
+# Define the eBPF program
+prog = """
+BPF_HASH(exec_counts, u32, u64); // Map: key=PID (u32), value=counter (u64)
+
+int count_execve(void *ctx) {
+    u32 pid = bpf_get_current_pid_tgid() >> 32;
+    u64 *val, zero = 0;
+    // Look up or initialize the counter for this PID
+    val = exec_counts.lookup_or_try_init(&pid, &zero);
+    if (val) (*val)++;
+    return 0;
+}
+"""
+
+b = BPF(text=prog)
+b.attach_kprobe(event=BPF.get_syscall_fnname("execve"), fn_name="count_execve")
+
+print("Collecting data... Press Ctrl+C to stop.")
+# Access the map from Python:
+# b["exec_counts"] would contain the data
+```
+
+#### Explanation of the Code:
+1.  **`BPF_HASH(exec_counts, u32, u64);`**: Defines a hash map named `exec_counts`. The keys are 32-bit (Process IDs), and the values are 64-bit (execution counters).
+2.  **`bpf_get_current_pid_tgid() >> 32`**: A helper function to extract the PID of the process triggering the `execve` event.
+3.  **`exec_counts.lookup_or_try_init(&pid, &zero);`**: This is a BCC convenience function. It checks if there is already a counter for this PID in the map. If not, it creates a new entry initialized to `zero`.
+4.  **`(*val)++`**: Once we have a pointer to the value, we increment it. Because this map is stored in kernel memory, these changes persist even after the `count_execve` function finishes execution.
+
+ ```
+int hello( void *ctx) {
+
+u64 uid;
+u64 couter = 0;
+u64 *p;
+
+uid = bpf_get_current_uid_gid() & 0xFFFFFF;
+p = counter_table.lookup(&uid);
+if (p != 0) {
+    counter = *p;
+   }
+ counter++;
+ counter_table.update(&uid, &counter);
+}
+"""
 
 - Lesson 1.4 Introduction to bpftool
 
