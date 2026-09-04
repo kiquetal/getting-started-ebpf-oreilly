@@ -213,7 +213,13 @@ Example: packet-of-death, firewalls, Cillium network policy
 
 
 
-#### Lesson 4.3 Cilliuam Tetragon
+#### Lesson 4.3 Cilium Tetragon
+
+Cilium Tetragon is an eBPF-based security observability and runtime enforcement tool. Unlike traditional tools that rely on system call logging at the user space level, Tetragon runs entirely in the kernel using eBPF, allowing it to:
+
+- **Enforce Policy in Real-time**: Block prohibited actions (e.g., executing a sensitive binary in a container) directly within the kernel.
+- **Deep Visibility**: Observe process execution, file access, and network activity with very low overhead, as it operates at the kernel level without constant context switching.
+- **Kubernetes Aware**: Understand Kubernetes context (namespaces, pod names), making it highly effective for securing modern cloud-native environments.
 
 
 
