@@ -183,11 +183,24 @@ The cilium use CilliumNetworkPolicy to restrict traffic
 
 #### Lesson 4.1 eBPF for Security
 
-Different between security observability and enforcement
+eBPF is used for security in two distinct ways:
 
-Gather events
-Compare them against a security policy
-Report out-o-policy events
+```
++-------------------------------------------------------------+
+|                  eBPF Security Approaches                   |
++-----------------------------+-------------------------------+
+|   Security Observability    |     Security Enforcement      |
+|    (Detection/Tracing)      |     (Prevention/Blocking)     |
++-----------------------------+-------------------------------+
+| Hook: kprobe, tracepoint    | Hook: LSM, XDP, seccomp       |
+| Action: Capture & Log       | Action: Block/Deny/Modify     |
+| Goal: "What happened?"      | Goal: "Should this happen?"   |
+| Impact: Low (Monitoring)    | Impact: High (Blocking)       |
++-----------------------------+-------------------------------+
+```
+
+1. **Security Observability**: Gather events, compare them against a security policy, and report out-of-policy events.
+2. **Security Enforcement**: Intercept actions at hooks (like LSM) and decide in real-time whether to allow or block them.
 
 
 #### Lesson 4.2 Attachement Points for Security
