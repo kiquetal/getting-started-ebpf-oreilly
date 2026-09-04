@@ -203,6 +203,9 @@ Bytecode isntructions are compiled into native machine instructions
 
 #### Lesson 5.2 BPF Bytecode and the BPF Virtual Machine
 
+Virutal machine implemented in sofware
+Programs consists of eBPF bytecode instructions
+10 genearl purpose regisers
 
 
 
