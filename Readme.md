@@ -209,8 +209,14 @@ Programs consists of eBPF bytecode instructions
 
 
 
-#### Lesson 5.3 BPF Verification
 
+#### Lesson 5.3 BPF Verification
+eBPF Verfier
+
+Analyses possible paths through an eBPF program
+Checks that it is safe to run
+ will run to completion
+ won't crash
 
 ### Lesson 5.4 Summary
 
