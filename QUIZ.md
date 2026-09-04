@@ -79,14 +79,14 @@ D. Generating logs for forbidden network connections.
 
 ---
 
-### 9. What actions can an eBPF program attached to XDP take? (Select all that apply)
+### 9. Identify which of the following scenarios are use cases for dropping network packets using an eBPF program. (Select all that apply)
 
-A. Report information about the user space process that sent the packet.
-B. Inspect and report information about the packet via an eBPF map.
-C. Modify the packet and pass it to the network stack (`XDP_PASS`).
-D. Drop the packet (`XDP_DROP`).
+A. Mitigating a kernel vulnerability in the network stack.
+B. Implementing a firewall.
+C. Enforcing network policies.
+D. Mitigating a kernel vulnerability in file access.
 
----
+(Correct Answers: A, B, C)
 
 ### 10. Which of these are capabilities of Cilium? (Select all that apply)
 
