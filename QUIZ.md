@@ -52,12 +52,12 @@ D. `ioctl()` with `BPF_MAP_LOAD`
 
 ---
 
-### 6. Why shouldn’t you build a security enforcement tool using eBPF programs attached to syscall entry points using kprobes? (Select all that apply)
+### 6. What is the main advantage of using eBPF observability tools built specifically for Kubernetes environments (e.g., Inspektor Gadget, Hubble)?
 
-A. eBPF programs attached to syscalls are not efficient.
-B. eBPF programs attached to syscalls can’t observe what user space applications are doing.
-C. An eBPF program attached to a syscall kprobe can’t affect the outcome of the syscall.
-D. There is an opportunity for parameters to the system call to be modified (TOCTOU).
+A. These tools are easier to use because they have a graphical UI.
+B. Other tools like BCC or bpftrace can’t detect events triggered by applications in Kubernetes pods.
+C. Other tools like BCC or bpftrace can’t run in a Kubernetes environment.
+D. These tools show information about Kubernetes identities, such as the name of pods and nodes involved in an event.
 
 ---
 
