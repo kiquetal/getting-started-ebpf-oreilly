@@ -106,7 +106,7 @@ B. List available eBPF helper functions.
 C. Edit an eBPF program loaded in the kernel.
 D. View debug tracing emitted by programs.
 
-(Correct Answers: A, B, D)
+(Correct Answers: A, B)
 
 ---
 
