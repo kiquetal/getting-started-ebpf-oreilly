@@ -175,6 +175,31 @@ TC= Traffic Control
 
 #### Lesson 2.3 Introduction to Cillium
 
+Cillium does not use kube-proxy
+
+The cilium use CilliumNetworkPolicy to restrict traffic
+
+
+
+#### Lesson 5
+
+#### Lesson 5.1: The bpf() system call
+
+User space code uses bpf() syscall (mainly)
+Verifier analyses the bytecode program
+Bytecode isntructions are compiled into native machine instructions
+
+
+
+#### Lesson 5.2 BPF Bytecode and the BPF Virtual Machine
+
+
+
+
+#### Lesson 5.3 BPF Verification
+
+
+### Lesson 5.4 Summary
 
 
 
