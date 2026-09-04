@@ -43,12 +43,14 @@ D. Z -> Y -> X
 
 ---
 
-### 5. What is the system call that creates an eBPF map?
+### 5. Which of the following are reasons why the eBPF Verifier might reject a program? (Select all that apply)
 
-A. `bpf()` with `BPF_MAP_CREATE`
-B. `bpf()` with `BPF_MAP_LOAD`
-C. `ioctl()` with `BPF_MAP_CREATE`
-D. `ioctl()` with `BPF_MAP_LOAD`
+A. The program makes a call to an invalid helper function for its context.
+B. The program has a loop that exceeds the eBPF complexity limit.
+C. The program dereferences a pointer without checking if it is null.
+D. The program calls a GPL-licensed helper function, but it does not declare a GPL-compatible license.
+
+(Correct Answers: A, B, C)
 
 ---
 
