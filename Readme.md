@@ -183,8 +183,16 @@ The cilium use CilliumNetworkPolicy to restrict traffic
 
 #### Lesson 4.1 eBPF for Security
 
+Different between security observability and enforcement
+
+Gather events
+Compare them against a security policy
+Report out-o-policy events
+
 
 #### Lesson 4.2 Attachement Points for Security
+
+
 
 
 #### Lesson 4.3 Cilliuam Tetragon
@@ -217,8 +225,6 @@ Analyses possible paths through an eBPF program
 Checks that it is safe to run
  will run to completion
  won't crash
-
-### Lesson 5.4 Summary
 
 
 
