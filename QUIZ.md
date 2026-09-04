@@ -50,7 +50,7 @@ B. The program has a loop that exceeds the eBPF complexity limit.
 C. The program dereferences a pointer without checking if it is null.
 D. The program calls a GPL-licensed helper function, but it does not declare a GPL-compatible license.
 
-(Correct Answers: A, B, C)
+(Correct Answers: A, B, C, D)
 
 ---
 
@@ -134,3 +134,27 @@ A. `opensnoop`
 B. `execsnoop`
 C. `gadget`
 D. `hubble`
+
+---
+
+## Verified Answer Key
+
+Based on the O'Reilly *Learning eBPF* course/book by Liz Rice, cross-checked against ebpf.io, cilium.io, and tetragon.io documentation.
+
+| # | Correct Answer(s) | Notes |
+|---|-------------------|-------|
+| 1 | A, B, C | D is wrong: bytecode is JIT-compiled to machine code, it is not itself machine code. |
+| 2 | A | eBPF programs are attached to events and run when the event fires. |
+| 3 | A (`bpftool prog show`) | `bpftool prog list` is an accepted alias, but the course uses `show`. |
+| 4 | C (Z → X → Y) | Load with `bpf()` syscall, verifier checks during load, then attach to event. |
+| 5 | A, B, C, D | **Corrected** — D is a real rejection cause: a GPL-only helper called without a GPL-compatible license declaration is rejected. |
+| 6 | D | Kubernetes-aware tools enrich events with pod/node identity. |
+| 7 | A, C, D | B is wrong: eBPF requires privilege (root / CAP_BPF), not any user. |
+| 8 | A, B | Enforcement = prevent/drop. C (alert) and D (log) are observability, not enforcement. |
+| 9 | A, B, C | D (file access) is not a network-packet-dropping use case. |
+| 10 | A, B, D | C is wrong: Cilium is not a container runtime. |
+| 11 | A, B, D | C is wrong: you cannot edit a program already loaded in the kernel. |
+| 12 | B, C, D | A is wrong: a service map is a Hubble feature, not Tetragon. |
+| 13 | D | Tetragon is part of the Cilium project. |
+| 14 | A, B | `opensnoop` and `execsnoop` are BCC tools; `gadget` is Inspektor Gadget and `hubble` is Cilium. |
+
