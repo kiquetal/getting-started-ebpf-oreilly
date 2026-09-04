@@ -125,23 +125,6 @@ print("Collecting data... Press Ctrl+C to stop.")
 3.  **`exec_counts.lookup_or_try_init(&pid, &zero);`**: This is a BCC convenience function. It checks if there is already a counter for this PID in the map. If not, it creates a new entry initialized to `zero`.
 4.  **`(*val)++`**: Once we have a pointer to the value, we increment it. Because this map is stored in kernel memory, these changes persist even after the `count_execve` function finishes execution.
 
- ```
-int hello( void *ctx) {
-
-u64 uid;
-u64 couter = 0;
-u64 *p;
-
-uid = bpf_get_current_uid_gid() & 0xFFFFFF;
-p = counter_table.lookup(&uid);
-if (p != 0) {
-    counter = *p;
-   }
- counter++;
- counter_table.update(&uid, &counter);
-}
-"""
-
 - Lesson 1.4 Introduction to bpftool
 
  Is the command line utility fo inspecting manageing eBPF
