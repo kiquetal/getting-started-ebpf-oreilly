@@ -202,6 +202,8 @@ eBPF is used for security in two distinct ways:
 1. **Security Observability**: Gather events, compare them against a security policy, and report out-of-policy events.
 2. **Security Enforcement**: Intercept actions at hooks (like LSM) and decide in real-time whether to allow or block them.
 
+Example: packet-of-death, firewalls, Cillium network policy
+
 
 #### Lesson 4.2 Attachement Points for Security
 
