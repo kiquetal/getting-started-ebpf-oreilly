@@ -179,6 +179,16 @@ Cillium does not use kube-proxy
 
 The cilium use CilliumNetworkPolicy to restrict traffic
 
+#### Lesson 4
+
+#### Lesson 4.1 eBPF for Security
+
+
+#### Lesson 4.2 Attachement Points for Security
+
+
+#### Lesson 4.3 Cilliuam Tetragon
+
 
 
 #### Lesson 5
