@@ -207,6 +207,9 @@ Example: packet-of-death, firewalls, Cillium network policy
 
 #### Lesson 4.2 Attachement Points for Security
 
+- **LSM (Linux Security Module) API**:
+  eBPF programs can hook into the LSM framework, which is designed for security enforcement. By attaching eBPF programs to LSM hooks, you can perform fine-grained authorization checks (e.g., controlling file access, network socket creation, or process execution) at runtime, allowing you to deny actions before they are fully executed by the kernel.
+
 
 
 
